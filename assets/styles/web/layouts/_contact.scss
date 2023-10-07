@@ -8,5 +8,14 @@
     @media screen and (min-width: $sm) {
         aspect-ratio: inherit;
     }
+    @media screen and (max-width: $sm) {
+        margin-top: $marge-m;
+        padding: $marge-m 0;
+    }
 }
 
+.acces{
+    @media screen and (max-width: $sm) {
+        margin-bottom: $marge-m;
+    }
+}

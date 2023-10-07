@@ -16,14 +16,22 @@
 }
 
 .home1{
+    padding: $marge-m 0;
     .image{
         aspect-ratio: 16/10;
+        overflow: hidden;
+        margin: $marge-m 0;
         img{
             object-fit: cover;
+            right: 0;
+            left: 0;
         }
     }
     @media screen and (min-width: $md) {
         padding: $marge-d-y 0;
+        .image{
+            margin: 0;
+        }
     }
 }
 

@@ -1,6 +1,17 @@
-<header></header>
-<nav>
-	<ul>
-		{{ include('webpages/blocks/_navigation.html.twig', { pos: 1 }) }}
-	</ul>
+<header class="bg-primary wd-100">
+	<button class="btn-nav-desktop toggle-nav">Menu</button>
+	<span class="main-title">Startup Weekend Impact</span>
+</header>
+
+<nav class="bg-primary main-nav position-fixed wd-100">
+	<div class="nav-content padding-all-on-md">
+		<ul class="margin-none padding-none">
+			{{ include('webpages/blocks/_navigation.html.twig', { pos: 0 }) }}
+		</ul>
+	</div>
+	<div class="image">
+		<img src="../uploads/images/img-nav.jpg" alt="">
+	</div>
 </nav>
+
+<button class="btn-nav toggle-nav position-fixed"></button>

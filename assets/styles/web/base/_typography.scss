@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $headings: (h1, $fsTitle1), (h2, $fsTitle2), (h3, $fsTitle3), (h4, $fsTitle4), (h5, $fsTitle5);
 
 @each $heading, $fontSize in $headings {
@@ -13,3 +14,50 @@ $headings: (h1, $fsTitle1), (h2, $fsTitle2), (h3, $fsTitle3), (h4, $fsTitle4), (
 p {
   @include font(400, $fsBody, false, $ff-body);
 }
+=======
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+h1{
+    @include font(400, 28, true, $ff-title);
+    @media screen and (min-width: $md) {
+        @include font(400, $fsTitle1, false, $ff-title);
+    }
+}
+
+h2{
+    @include font(400, 20, false, $ff-title);
+    @media screen and (min-width: $md) {
+        @include font(400, $fsTitle2, false, $ff-title);
+        &.small{
+            @include font(400, 26, false, $ff-title);
+        }
+    }
+}
+
+h3{
+    @include font(400, $fsTitle3, true, $ff-title);
+}
+
+h4{
+    @include font(400, $fsTitle4, true, $ff-title);
+}
+
+h5{
+    @include font(400, $fsTitle5, true, $ff-title);
+}
+
+p, ul{
+    @include font(400, 16, false, $ff-body);
+    @media screen and (min-width: $md) {
+        @include font(400, 18, false, $ff-body);
+    }
+}
+
+p{
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+>>>>>>> parent of 32ca7a7 (KR - MAJ vers la 2.4)

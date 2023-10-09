@@ -16,26 +16,26 @@ Assurez-vous d'avoir installé les éléments suivants avant de commencer :
 ## Installation
 
 1. Clonez ce dépôt sur votre machine locale en utilisant la commande suivante :
-    git clone https://github.com/creative-eye-studio/startup-weekend-cergy.git startup-weekend-cergy
+    - git clone https://github.com/creative-eye-studio/startup-weekend-cergy.git startup-weekend-cergy
 
 2. Accédez au répertoire du projet
-    cd startup-weekend-cergy
+    - cd startup-weekend-cergy
 
 3. Installez les dépendances
-    composer install --no-dev
-    yarn install
-    npm install
+    - composer install --no-dev
+    - yarn install
+    - npm install
 
 4. Configurez le CSS et le JS
-    yarn encore prod
+    - yarn encore prod
 
 5. Configurez l'accès à la base de données dans le fichier .env
     DATABASE_URL="mysql://username:password@server:port/database?serverVersion=5.7&charset=utf8mb4"
-    symfony console doctrine:database:create
-    symfony console doctrine:migrations:migrate
+    - symfony console doctrine:database:create
+    - symfony console doctrine:migrations:migrate
 
 6. Lancez le serveur de développement Symfony
-    symfony server:start
+    - symfony server:start
 
 
 ## Licence

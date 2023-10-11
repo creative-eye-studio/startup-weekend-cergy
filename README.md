@@ -30,7 +30,7 @@ Assurez-vous d'avoir installé les éléments suivants avant de commencer :
     - yarn encore prod
 
 5. Configurez l'accès à la base de données dans le fichier .env
-    DATABASE_URL="mysql://username:password@server:port/database?serverVersion=5.7&charset=utf8mb4"
+    - DATABASE_URL="mysql://username:password@server:port/database?serverVersion=5.7&charset=utf8mb4"
     - symfony console doctrine:database:create
     - symfony console doctrine:migrations:migrate
 
@@ -39,5 +39,5 @@ Assurez-vous d'avoir installé les éléments suivants avant de commencer :
 
 
 ## Licence
-Ce projet a été développé avec le CMS Dream Site de Creative Eye Studio
-En cas de difficultés, n'hésitez pas à nous faire part de vos demandes à creative.eye.fr@gmail.com
+- Ce projet a été développé avec le CMS Dream Site de Creative Eye Studio
+- En cas de difficultés, n'hésitez pas à nous faire part de vos demandes à creative.eye.fr@gmail.com

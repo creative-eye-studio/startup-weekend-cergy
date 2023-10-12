@@ -1,42 +1,33 @@
-version: '3.3'
+version: '3.8'
+
 services:
   db:
-    container_name: "database"
-    platform: linux/x86_64
     image: mysql:5.7
     environment:
-      MYSQL_DATABASE: 'db'
-      MYSQL_USER: 'user'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
-    ports:
-      - '3306:3306'
-    expose:
-      - '3306'
-    volumes:
-      - my-db:/var/lib/mysql
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
 
   dreamsite:
-    container_name: "dreamsite"
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    build: .
     environment:
+      APP_ENV: prod
       DATABASE_URL: mysql://user:password@db:3306/db?serverVersion=5.7&charset=utf8mb4
     ports:
-      - '8000:8000'
+      - 8000:80
 
   phpmyadmin:
-    container_name: "phpmyadmin"
     image: phpmyadmin/phpmyadmin
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
-      PMA_USER: user
-      PMA_PASSWORD: password
+      PMA_USER: user        # Nom d'utilisateur root pour PhpMyAdmin
+      PMA_PASSWORD: password    # Mot de passe root pour PhpMyAdmin
     ports:
       - '8080:80'
+
 
 # Names our volume
 volumes:

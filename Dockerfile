@@ -1,23 +1,25 @@
-FROM lucassovre/composer-symfony-node as buidler
+FROM php:8.2-apache
 
-WORKDIR /app
+RUN a2enmod rewrite
+ 
+RUN apt-get update \
+    && apt-get install -y libzip-dev git wget libicu-dev --no-install-recommends \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Installer l'extension PHP intl
-RUN apk add --no-cache icu-libs && apk add --no-cache --virtual .build-deps icu-dev
-RUN docker-php-ext-configure intl && docker-php-ext-install intl && docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install intl pdo pdo_mysql zip
+ 
+RUN wget https://getcomposer.org/download/2.5.1/composer.phar \
+    && mv composer.phar /usr/bin/composer && chmod +x /usr/bin/composer
+ 
+COPY .docker/apache.conf /etc/apache2/sites-enabled/000-default.conf
+COPY .docker/entrypoint.sh /entrypoint.sh
+COPY . /var/www
+ 
+WORKDIR /var/www
 
-#install composer dependencies
-RUN composer require symfony/webpack-encore-bundle symfony/ux-dropzone symfony/ux-swup symfony/ux-chartjs symfony/ux-vue
-COPY . .
+RUN chmod +x /entrypoint.sh
+ 
+CMD ["apache2-foreground"]
 
-#add all nodes dependencies
-RUN composer install
-RUN npm install --force && npm run build
-
-FROM trafex/php-nginx
-
-COPY --from=buidler /app /var/www/html
-
-EXPOSE 8000
-
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+ENTRYPOINT ["/entrypoint.sh"]

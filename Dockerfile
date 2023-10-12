@@ -13,13 +13,15 @@ RUN wget https://getcomposer.org/download/2.5.1/composer.phar \
     && mv composer.phar /usr/bin/composer && chmod +x /usr/bin/composer
  
 COPY .docker/apache.conf /etc/apache2/sites-enabled/000-default.conf
-COPY .docker/entrypoint.sh /entrypoint.sh
+# COPY .docker/entrypoint.sh /entrypoint.sh
 COPY . /var/www
  
 WORKDIR /var/www
 
-RUN chmod +x /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
  
 CMD ["apache2-foreground"]
 
-ENTRYPOINT ["/entrypoint.sh"]
+RUN composer install -n
+
+# ENTRYPOINT ["/entrypoint.sh"]

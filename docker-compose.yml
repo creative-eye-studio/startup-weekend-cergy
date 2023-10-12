@@ -23,8 +23,8 @@ services:
       PMA_HOST: db
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
-      PMA_USER: user        # Nom d'utilisateur root pour PhpMyAdmin
-      PMA_PASSWORD: password    # Mot de passe root pour PhpMyAdmin
+      PMA_USER: user          # Nom d'utilisateur root pour PhpMyAdmin
+      PMA_PASSWORD: password  # Mot de passe root pour PhpMyAdmin
     ports:
       - '8080:80'
 
